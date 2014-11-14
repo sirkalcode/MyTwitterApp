@@ -14,7 +14,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -33,15 +35,28 @@ public class MyTweetListActivity extends ListActivity {
         //String[] myStrings = new String[]{"AAAAAAA", "BBBBBB", "CCCCCCCC", "DDDDDDD", "EEEEEEEEEEE", "FFFFFFFF"};
 
         //This is where I will fill out my tweet model from service
+
+        DatabaseHandler db = new DatabaseHandler(this);
+
         ArrayList<Tweet> tweets = new ArrayList<Tweet>();
         for ( int i = 0; i < 20; i++ ) {
             Tweet tweet = new Tweet();
-            tweet.setTitle("A nice header for Tweet # " + i);
-            tweet.setBody("Some random body text for the tweet # " +i);
-            tweets.add(tweet);
+            tweet.setId(i*100);
+            tweet.setTitle("A nice header for Tweet # " + i*100);
+            tweet.setBody("Some random body text for the tweet # " + i*100);
+            tweet.setDate(new Date());
+            db.addTweet(tweet);
+            //tweets.add(tweet);
         }
 
-        MyAdapter myAdapter = new MyAdapter(this, tweets);
+        //MyAdapter myAdapter = new MyAdapter(this, tweets);
+        MyAdapter myAdapter  = null;
+        try {
+            myAdapter = new MyAdapter(this, db.getAllTweets());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         setListAdapter(myAdapter);
     }
 
@@ -52,8 +67,6 @@ public class MyTweetListActivity extends ListActivity {
         Tweet tweet = new Tweet();
         tweet.setTitle("A nice header for Tweet # ");
         tweet.setBody("Some random body text for the tweet # " );
-
-
 
         TextView ht = (TextView)v.findViewById(R.id.headertextTV);
         TextView dt = (TextView)v.findViewById(R.id.bodytextTV);
