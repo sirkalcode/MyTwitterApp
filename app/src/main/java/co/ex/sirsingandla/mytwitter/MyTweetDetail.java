@@ -23,6 +23,8 @@ public class MyTweetDetail extends Activity {
         String e2 = intent.getStringExtra("DetailTextyy");
         dText.setText(e2);
 
+        Tweet t = (Tweet)intent.getSerializableExtra("k");
+
     }
 
 

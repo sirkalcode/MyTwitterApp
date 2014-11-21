@@ -2,12 +2,13 @@ package co.ex.sirsingandla.mytwitter;
 
 import android.provider.BaseColumns;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Sirsingandla on 10/26/2014.
  */
-public class Tweet
+public class Tweet implements Serializable
 {
 
     public Tweet() {

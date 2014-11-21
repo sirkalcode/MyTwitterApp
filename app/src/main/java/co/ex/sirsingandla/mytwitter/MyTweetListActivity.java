@@ -66,7 +66,7 @@ public class MyTweetListActivity extends ListActivity {
 
         Tweet tweet = new Tweet();
         tweet.setTitle("A nice header for Tweet # ");
-        tweet.setBody("Some random body text for the tweet # " );
+        tweet.setBody("Some random body text for the tweet **#** " );
 
         TextView ht = (TextView)v.findViewById(R.id.headertextTV);
         TextView dt = (TextView)v.findViewById(R.id.bodytextTV);
@@ -76,7 +76,7 @@ public class MyTweetListActivity extends ListActivity {
         Intent intent = new Intent(MyTweetListActivity.this, MyTweetDetail.class);
         intent.putExtra("HeaderTextxx", ht.getText());
         intent.putExtra("DetailTextyy", dt.getText());
-        intent.putExtra("k", tweet.getClass());
+        intent.putExtra("k", tweet);
         startActivity(intent);
     }
 
