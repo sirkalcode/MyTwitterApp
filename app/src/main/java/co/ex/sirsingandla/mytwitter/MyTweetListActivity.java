@@ -41,9 +41,9 @@ public class MyTweetListActivity extends ListActivity {
         ArrayList<Tweet> tweets = new ArrayList<Tweet>();
         for ( int i = 0; i < 20; i++ ) {
             Tweet tweet = new Tweet();
-            tweet.setId(i*100);
-            tweet.setTitle("A nice header for Tweet # " + i*100);
-            tweet.setBody("Some random body text for the tweet # " + i*100);
+            tweet.setId(i*15);
+            tweet.setTitle("A nice header for Tweet # " + i*15);
+            tweet.setBody("Some random body text for the tweet # " + i*15);
             tweet.setDate(new Date());
             db.addTweet(tweet);
             //tweets.add(tweet);
